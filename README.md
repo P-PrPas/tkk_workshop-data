@@ -5,14 +5,14 @@
 
 ```
 images/{train,val,test}/   รูป .jpg  (10 / 2 / 3)
-labels/{train,val,test}/   label YOLO .txt ชื่อตรงกับรูป  (class cx cy w h, normalize 0-1)
-cup.yaml                   dataset config (1 class: cup)
+labels/{train,val,test}/   label YOLO .txt ชื่อตรงกับรูป  (41 cx cy w h, normalize 0-1)
+cup.yaml                   dataset config — สคีมา COCO 80 คลาส (cup = 41)
 ```
 
 ## สถานะ
 - `images/` + `labels/` — 15 รูป (10/2/3) พร้อม label ครบแล้ว
-  label ทำแบบ auto-label: รัน `yolo11x.pt` (COCO) กรองเฉพาะ class 41 = cup แปลงเป็น class 0
-  ยกเว้น `test/IMG_7184` (มุมมองจากด้านบน โมเดลจับไม่ได้) ตีกล่องด้วยมือ
-  ตรวจกล่องทุกใบด้วยตาแล้ว
+  label เป็น **class 41** (`cup` ในสคีมา COCO) — โมเดลจิ๋วต้องเก็บหัว 80 คลาสไว้ ดู docs/03
+  ทำแบบ auto-label: `yolo11x.pt` (COCO) กรอง class 41
+  ยกเว้น `test/IMG_7184` (มุมมองจากด้านบน โมเดลจับไม่ได้) ตีกล่องด้วยมือ ตรวจทุกใบด้วยตาแล้ว
 - test มีรูปยากตามสเปก: `IMG_7184` (มองจากบน พื้นสว่าง), `IMG_7192` (แก้วเล็กในฉากรก มีขวดในเฟรม)
 - ไม่มี `sample.mp4` — พาร์ท realtime เปิดกล้องใน Colab ตรงๆ ถ้ากล้องพังหน้างานให้อัดคลิปสดแล้วใช้ `run_video()`
