@@ -1,4 +1,4 @@
-path: .
+# ไม่ใส่ path: — ultralytics จะอิงโฟลเดอร์ที่ไฟล์นี้อยู่เป็น root
 train: images/train
 val: images/val
 test: images/test
